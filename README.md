@@ -1,4 +1,4 @@
-# 💰 Expense Tracker
+# Expense Tracker
 
 A Splitwise-style expense tracker that automatically categorizes expenses using a trained ML model, with real persistence and expense splitting between friends.
 
@@ -41,7 +41,7 @@ Retrieved and displayed back in the dashboard
 
 Splitting works through a **junction table** (`Split`) connecting `Expense` and `Person` — each row represents one fact: "this person owes this much for this expense," correctly modeling the many-to-many relationship between expenses and people.
 
-## The ML Story
+## The ML Part
 
 **Dataset:** built synthetically (since real personal expense data isn't publicly available), combining template-based examples with hand-written natural-language sentences upto ~900 rows across 6 categories.
 
