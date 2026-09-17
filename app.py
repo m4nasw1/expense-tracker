@@ -24,7 +24,7 @@ with st.form("expense_form"):
         else:
             st.error("Something went wrong adding the expense.")
 
-            st.header("Your expenses")
+st.header("Your expenses")
 
 response = requests.get(f"{API_URL}/expenses")
 if response.status_code == 200:
@@ -34,6 +34,13 @@ if response.status_code == 200:
 
         total = sum(e["amount"] for e in expenses)
         st.metric("Total spent", f"₹{total:.2f}")
+
+        st.subheader("Spending by category")
+        category_totals = {}
+        for e in expenses:
+            category_totals[e["category"]] = category_totals.get(e["category"], 0) + e["amount"]
+
+        st.bar_chart(category_totals)
     else:
         st.info("No expenses yet. Add one above!")
 else:
